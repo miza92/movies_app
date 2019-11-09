@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieData from './components/MovieData.js';
+import MovieCard from './components/MovieCard.js';
 import './assets/css/App.css';
 
 export default class App extends React.Component {
@@ -13,7 +13,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <p>Bonjour !</p>
-        <MovieData />
+        <MovieCard />
       </div>
     );
   }

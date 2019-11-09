@@ -1,6 +1,14 @@
 import React from 'react';
 import '../assets/css/App.css';
 import movies from "../helpers/movies.js";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import IconButton from '@material-ui/core/IconButton';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import Badge from '@material-ui/core/Badge';
+// import MailIcon from '@material-ui/icons/Mail';
+import Button from '@material-ui/core/Button';
+
 
 export default class MovieData extends React.Component {
   constructor() {
@@ -24,10 +32,25 @@ export default class MovieData extends React.Component {
           <div class="card-body">
             <h5 class="card-title">{movie.title}</h5>
             <p class="card-text">{movie.category}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+            <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton color="secondary" aria-label="thumbdown">
+          <ThumbDownIcon />
+        </IconButton>
+        <IconButton color="primary" aria-label="thumbup">
+          <Badge badgeContent={1000} max={999} color="primary">
+          <ThumbUpIcon />
+        </Badge>
+        </IconButton>
+        <Badge color="primary" badgeContent={4} >
+        <Button variant="contained">Button</Button>
+      </Badge>
           </div>
         </div>
         ))}
+        <div></div>
       </div>
     );
   }
