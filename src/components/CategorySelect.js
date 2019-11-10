@@ -85,7 +85,6 @@ export default function MultipleSelect() {
         <Select
           labelId="demo-mutiple-name-label"
           id="demo-mutiple-name"
-          multiple
           value={personName}
           onChange={handleChange}
           input={<Input />}

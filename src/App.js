@@ -1,6 +1,8 @@
 import React from 'react';
-import MovieCard from './components/MovieCard.js';
 import './assets/css/App.css';
+import CategorySelect from './components/CategorySelect.js';
+import MovieCard from './components/MovieCard.js';
+// import BodyData from './components/BodyData.js';
 
 export default class App extends React.Component {
   constructor(){
@@ -13,7 +15,9 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <p>Bonjour !</p>
+        <CategorySelect />
         <MovieCard />
+        {/* <BodyData /> */}
       </div>
     );
   }
