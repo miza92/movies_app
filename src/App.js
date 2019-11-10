@@ -2,7 +2,8 @@ import React from 'react';
 import './assets/css/App.css';
 import CategorySelect from './components/CategorySelect.js';
 import MovieCard from './components/MovieCard.js';
-// import BodyData from './components/BodyData.js';
+import DeleteMovie from './components/DeleteMovie.js';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
   constructor(){
@@ -13,12 +14,16 @@ export default class App extends React.Component {
   }
   render() {
     return (
+      <BrowserRouter>
       <div className="App">
         <p>Bonjour !</p>
         <CategorySelect />
         <MovieCard />
-        {/* <BodyData /> */}
+        <div className="main-route-place">
+          <Route exact path="/:id/delete" component={DeleteMovie} />
+        </div>
       </div>
+      </BrowserRouter>
     );
   }
 }

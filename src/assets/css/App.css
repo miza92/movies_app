@@ -1,11 +1,13 @@
 .App {
   text-align: center;
 }
-
-.MovieCard {
+/* .MovieCard {
   display: flex;
   flex-wrap: wrap;
 }
 .Carts {
   margin: 4px;
+} */
+.Delete {
+  background-color: #9e9e9e;
 }
