@@ -1,29 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './assets/css/App.css';
 import CategorySelect from './components/CategorySelect.js';
 import MovieCard from './components/MovieCard.js';
-import DeleteMovie from './components/DeleteMovie.js';
-import { BrowserRouter, Route } from 'react-router-dom';
+// import DeleteMovie from './components/DeleteMovie.js';
+import movies from "./helpers/movies.js";
+import TablePagination from '@material-ui/core/TablePagination';
 
-export default class App extends React.Component {
-  constructor(){
-    super();
-    this.state={
-        movies : []
-    };
-  }
-  render() {
+export default function App() { 
+
+  const [list, updateList] = useState(movies);
+
+  const handleRemoveItem = itemId => {
+     updateList(list.filter(item => item.id !== itemId));
+   };
     return (
-      <BrowserRouter>
       <div className="App">
         <p>Bonjour !</p>
-        <CategorySelect />
-        <MovieCard />
-        <div className="main-route-place">
-          <Route exact path="/:id/delete" component={DeleteMovie} />
-        </div>
+        <CategorySelect key={movies.id} />
+        <MovieCard 
+          key={movies.id}
+          value={movies.value}
+          onDelete={handleRemoveItem}
+          id={movies.id}
+        />
+        <TablePagination
+        rowsPerPageOptions={[4, 8, 12]}
+        component="div"
+        backIconButtonProps={{
+          'aria-label': 'previous page',
+        }}
+        nextIconButtonProps={{
+          'aria-label': 'next page',
+        }}
+      />
       </div>
-      </BrowserRouter>
     );
-  }
 }

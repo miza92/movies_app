@@ -4,20 +4,20 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import movies from "../helpers/movies.js";
-import DeleteMovie from './DeleteMovie.js';
 import Badge from '@material-ui/core/Badge';
 import Typography from '@material-ui/core/Typography';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import { styled } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
   card: {
     width: 320,
-    margin: 4,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    margin: 7,
+    boxShadow: '0 3px 1px 2px rgba(255, 105, 135, .3)',
   },
   movieCard: {
     display: "flex",
@@ -31,16 +31,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MovieCard() {
+export default function MovieCard(props) {
   const classes = useStyles();
 
-  const handleDelete = itemId => {
-    const movies = this.state.movies.filter(item => item.id !== itemId);
-    console.log(movies)
-    this.setState({ 
-      movies: movies
-    });
-  };
+  const MyButton = styled(Button)({
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    border: 0,
+    borderRadius: 3,
+    color: 'white',
+    height: 30,
+    padding: '0 10px',
+  });
 
   return (
     <div className={classes.movieCard}>
@@ -72,12 +73,7 @@ export default function MovieCard() {
                 </Button>
               </Badge>
               <div>
-              <DeleteMovie
-                key={movie.id}
-                value={movie.value}
-                onDelete={handleDelete}
-                id={movie.id}
-              />
+              <MyButton onClick={() => props.onDelete(movie.id)}><DeleteIcon /></MyButton>
               </div>
             </CardActions>
           </Card>
